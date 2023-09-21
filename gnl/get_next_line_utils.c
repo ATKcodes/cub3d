@@ -49,13 +49,11 @@ int	get_ft_strlcpy(char *dst, char *src, int dstsize)
 //finds the line to print and returns it.
 char	*get_nl(char *beenread, int i)
 {
-	int		d;
 	char	*new_line;
 
 	new_line = malloc (sizeof(char) * (i + 1));
 	if (!new_line)
 		return (NULL);
-	d = 0;
 	get_ft_strlcpy(new_line, beenread, i + 1);
 	return (new_line);
 }

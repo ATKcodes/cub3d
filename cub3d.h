@@ -15,8 +15,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "gnl/get_next_line.h"
 
-typedef struct t_pars{
+typedef struct s_pars{
 
 	int		fd;
 	int		x;
@@ -24,5 +25,17 @@ typedef struct t_pars{
 	int		curr_x;
 	int		curr_y;
 	char	**matrix;
+	char	*gnl;
+	int		rows;
+	}	t_pars;
 
-	}	s_pars;
+void	ft_error(char *str);
+
+int		ft_gnllen(char *str);
+void	ft_putstr(char *str);
+int		ft_strlen(char *str);
+
+void	count_rows(t_pars *pars);
+
+void	parsing(t_pars *pars);
+void	check_characters(t_pars *pars);
