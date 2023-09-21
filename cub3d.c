@@ -12,9 +12,13 @@
 
 #include "cub3d.h"
 
-void	parsing(t_pars pars)
+void	parsing(t_pars *pars)
 {
-	if(get_next_line(argv(1)))
+	int	i = -1;
+
+	if(get_next_line(pars->fd) == NULL)
+		ft_error("File isn't readable\n");
+	while ()
 }
 
 int	main(int argc, char *argv[])
@@ -26,9 +30,9 @@ int	main(int argc, char *argv[])
 			&& argv[1][ft_strlen(argv(1)) - 3] != 'c'
 				&& argv[1][strlen(argv(1)) - 2] != 'u'
 					&& argv[1][strlen(argv(1)) - 1] != 'b')
-		ft_error("invalid file extension\n");
+		ft_error("Invalid file extension\n");
 	pars.fd = open(argv(1))
 	if (pars.fd == -1)
-		ft_error("file does not exist\n");
+		ft_error("Can't open file\n");
 	parsing(&pars);
 }
