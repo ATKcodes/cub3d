@@ -39,3 +39,5 @@ void	count_rows(t_pars *pars);
 
 void	parsing(t_pars *pars);
 void	check_characters(t_pars *pars);
+void	check_borders(t_pars *pars);
+void	check_rows(t_pars *pars);

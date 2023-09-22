@@ -30,6 +30,7 @@ void	parsing(t_pars *pars)
 		pars->matrix[i][d] = '\0';
 	}
 	check_characters(pars);
+	check_borders(pars);
 	for (int d = 0; d < pars->rows; d++)
 		printf("%s\n", pars->matrix[d]);
 }

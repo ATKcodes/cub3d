@@ -14,7 +14,6 @@ void	count_rows(t_pars *pars)
 	}
 	close(pars->fd);
 	pars->matrix = malloc (sizeof(char *) * (pars->rows));
-	// pars->matrix[pars->rows] = NULL;
 }
 
 void	check_characters(t_pars *pars)
@@ -41,5 +40,55 @@ void	check_characters(t_pars *pars)
 				}
 			}
 		}
+	}
+}
+void	check_borders(t_pars *pars)
+{
+	pars->y = 0;
+
+	while(pars->y++ < pars->rows)
+	{
+		pars->x = 0;
+		while((pars->y == 0 || pars->y == pars->rows - 1) && pars->x < ft_strlen(pars->matrix[pars->y]))
+		{
+			if(pars->matrix[pars->y][pars->x] != '1' && pars->matrix[pars->y][pars->x] != ' ')
+				{
+					//free_matrix(pars);
+					ft_error("Invalid Mapssss\n"); 
+				}
+			pars->x++;
+		} 
+		check_rows(pars);
+	}
+}
+//errore nel ciclo va in heap buffer overflow prima di completare il primo ciclo while prob riga 68
+void	check_rows(t_pars *pars)
+{
+	int flag;
+	flag = 0;
+	while(pars->y != 0 && pars->y != pars->rows - 1 && pars->x < ft_strlen(pars->matrix[pars->y]))
+	{
+		while(pars->matrix[pars->y][pars->x] == ' ')
+		{
+			if(pars->matrix[pars-> y][pars->x +1] == '1')
+				{
+					pars->x++;
+					break;
+				}	
+			
+			pars->x++;
+		}
+		if(pars->matrix[pars-> y][pars->x] != '1' && flag == 0)
+		{
+			printf("%d\n", pars->matrix[pars-> y][pars->x]);
+				//free_matrix(pars);
+			ft_error("Invalid Map\n"); 
+		}
+		else
+		{
+				flag++;
+				printf("c");
+		}
+		pars->x++;
 	}
 }
