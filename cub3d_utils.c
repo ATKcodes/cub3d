@@ -13,6 +13,8 @@ int		ft_gnllen(char *str)
 {
 	int	i = 0;
 
+	if(!str)
+		return(0);
 	while (str[i] != '\n' && str[i] != '\0')
 		i++;
 	return (i);

@@ -1,6 +1,6 @@
 NAME = cub3d
 
-SRCS = 	 cub3d.c cub3d_utils.c gnl/get_next_line.c error.c gnl/get_next_line_utils.c parsing.c \
+SRCS = 	 cub3d.c cub3d_utils.c gnl/get_next_line.c error.c gnl/get_next_line_utils.c parsing.c info_gather.c save_param.c save_param2.c\
 
 OBJS = ${SRCS:.c=.o}
 

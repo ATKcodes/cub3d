@@ -18,12 +18,10 @@ void	parsing(t_pars *pars)
 	int	d;
 
 	i = -1;
-	printf("%d\n", pars->rows);
 	while (++i < pars->rows )
 	{
 		d = -1;
 		pars->gnl = get_next_line(pars->fd);
-		printf("%d\n", i);
 		pars->matrix[i] = malloc (ft_gnllen(pars->gnl) + 1);
 		while(++d < ft_gnllen(pars->gnl))
 			pars->matrix[i][d] = pars->gnl[d]; 
@@ -49,6 +47,9 @@ int	main(int argc, char *argv[])
 	if (pars.fd == -1)
 		ft_error("Invalid file\n");
 	count_rows(&pars);
+	
 	pars.fd = open(argv[1], O_RDONLY);
+	init_flags(&pars);
+	get_info(&pars);
 	parsing(&pars);
 }

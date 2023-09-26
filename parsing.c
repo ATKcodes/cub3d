@@ -42,11 +42,12 @@ void	check_characters(t_pars *pars)
 		}
 	}
 }
+
 void	check_borders(t_pars *pars)
 {
 	pars->y = 0;
 
-	while(pars->y++ < pars->rows)
+	while(pars->y < pars->rows)
 	{
 		pars->x = 0;
 		while((pars->y == 0 || pars->y == pars->rows - 1) && pars->x < ft_strlen(pars->matrix[pars->y]))
@@ -59,13 +60,15 @@ void	check_borders(t_pars *pars)
 			pars->x++;
 		} 
 		check_rows(pars);
+		pars->y++;
 	}
 }
-//errore nel ciclo va in heap buffer overflow prima di completare il primo ciclo while prob riga 68
+
 void	check_rows(t_pars *pars)
 {
 	int flag;
 	flag = 0;
+	printf ("%d : \n", pars->y);
 	while(pars->y != 0 && pars->y != pars->rows - 1 && pars->x < ft_strlen(pars->matrix[pars->y]))
 	{
 		while(pars->matrix[pars->y][pars->x] == ' ')
@@ -85,10 +88,7 @@ void	check_rows(t_pars *pars)
 			ft_error("Invalid Map\n"); 
 		}
 		else
-		{
-				flag++;
-				printf("c");
-		}
+			flag++;
 		pars->x++;
 	}
 }
