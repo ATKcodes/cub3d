@@ -115,5 +115,10 @@ void init_flags(t_pars *pars)
 	pars->info.SO.flag = 0;
 	pars->info.ceiling.flag = 0;
 	pars->info.floor.flag = 0;
-	
+	pars->info.floor.red = -1;
+	pars->info.floor.green = -1;
+	pars->info.floor.blue = -1;
+	pars->info.ceiling.red = -1;
+	pars->info.ceiling.green = -1;
+	pars->info.ceiling.blue = -1;
 }

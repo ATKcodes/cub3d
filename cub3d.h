@@ -53,15 +53,18 @@ typedef struct s_info {
 	char	**matrix;
 	char	*gnl;
 	int		rows;
+	int		comma_counter;
 	t_info	info;
 	}	t_pars;
 
 void	ft_error(char *str);
+
 void	init_flags(t_pars *pars);
 
 int		ft_gnllen(char *str);
 void	ft_putstr(char *str);
 int		ft_strlen(char *str);
+int		ft_is_comma_num(int c, t_pars *pars);
 
 void	count_rows(t_pars *pars);
 void	get_info(t_pars *pars);
@@ -72,4 +75,9 @@ void	check_borders(t_pars *pars);
 void	check_rows(t_pars *pars);
 
 void	save_north(t_pars *pars);
-void	save_ceiling(t_pars *pars);
+void	save_south(t_pars *pars);
+void	save_east(t_pars *pars);
+void	save_west(t_pars *pars);
+
+void	save_background(t_pars *pars);
+void	save_colors(t_pars *pars, int color, char *str);

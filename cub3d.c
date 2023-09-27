@@ -47,7 +47,6 @@ int	main(int argc, char *argv[])
 	if (pars.fd == -1)
 		ft_error("Invalid file\n");
 	count_rows(&pars);
-	
 	pars.fd = open(argv[1], O_RDONLY);
 	init_flags(&pars);
 	get_info(&pars);
