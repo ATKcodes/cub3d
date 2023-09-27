@@ -28,6 +28,7 @@ void	get_info(t_pars *pars)
 					ft_error("Invalid parameteeers");				
 			}
 	}
+	free(pars->gnl);
 		if(pars->info.ceiling.blue == -1 || pars->info.floor.blue == -1  || pars->info.count_info != 6)
 	{
 		//free();
