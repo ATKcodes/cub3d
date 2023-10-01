@@ -1,25 +1,19 @@
 #include "cub3d.h"
-// salvare red e blue in ceiling
+
 void	save_background(t_pars *pars)
 {
-	int		a;
-	int		i;
-	char	*str;
-	int		counter;
-	int 	color;
-
-	i = 1;
-	color = 0;
+	pars->i = 1;
+	pars->color = 0;
 	pars->comma_counter = 0;
-	while (++i < ft_gnllen(pars->gnl))
+	while (++pars->i < ft_gnllen(pars->gnl))
 	{
-		if (ft_is_comma_num(pars->gnl[i], pars) == 0)
+		if (ft_is_comma_num(pars->gnl[pars->i], pars) == 0)
 		{
 			//free();
 			ft_error("Wrong parsamenters\n");
 		}
 	}
-	i = 2;
+	pars->i = 2;
 	if (pars->gnl[0] == 'C' && pars->info.ceiling.flag != 0)
 	{
 		//free();
@@ -30,60 +24,66 @@ void	save_background(t_pars *pars)
 		// free();
 		ft_error("Wrong paramenters\n");
 	}
-	while (i < ft_gnllen(pars->gnl))
-	{
-		a = 0;
-		counter = 0;
-		while(pars->gnl[i] != ','  && pars->gnl[i] != '\n')
-		{	
-			i++;
-			a++;
-		}
-		str = malloc(a + 1);
-		while(a > 0)
-		{
-			str[counter++] = pars->gnl[i - a];
-			a--;
-		}
-		str[counter] = '\0';
-	printf("%s\n",str);
-	i++;
-	save_colors(pars, color, str);
-	color++;
-	free(str);
-	}
-	pars->info.count_info++;
+	background_cycle(pars);
 }
 
-void	save_colors(t_pars *pars, int color, char *str)
+void	background_cycle(t_pars *pars)
+{
+	while (pars->i < ft_gnllen(pars->gnl))
+	{
+		pars->a = 0;
+		pars->counter = 0;
+		while(pars->gnl[pars->i] != ','  && pars->gnl[pars->i] != '\n')
+		{	
+			pars->i++;
+			pars->a++;
+		}
+		pars->str = malloc(pars->a + 1);
+		while(pars->a > 0)
+		{
+			pars->str[pars->counter++] = pars->gnl[pars->i - pars->a];
+			pars->a--;
+		}
+		pars->str[pars->counter] = '\0';
+	printf("%s\n",pars->str);
+	pars->i++;
+	save_colors(pars);
+	pars->color++;
+	free(pars->str);
+	}
+}
+
+void	save_colors(t_pars *pars)
 {
 	int n;
-	n = atoi(str);
+	n = atoi(pars->str);
 	if (n > 255 || n < 0)
 		//free()
 		ft_error("Wrong colors");
 	if (pars->gnl[0] == 'C')
 	{
-		if (color == 0)
+		if (pars->color == 0)
 			pars->info.ceiling.red = n;
-		if (color == 1)
+		if (pars->color == 1)
 			pars->info.ceiling.green = n;
-		if (color == 2)
+		if (pars->color == 2)
 		{
 			pars->info.ceiling.blue = n;
 			pars->info.ceiling.flag++;
+			pars->info.count_info++;
 		}
 	}
 	if (pars->gnl[0] == 'F')
 	{
-		if (color == 0)
+		if (pars->color == 0)
 			pars->info.floor.red = n;
-		if (color == 1)
+		if (pars->color == 1)
 			pars->info.floor.green = n;
-		if (color == 2)
+		if (pars->color == 2)
 		{
 			pars->info.floor.blue = n;
 			pars->info.floor.flag++;
+			pars->info.count_info++;
 		}
 	}
 }

@@ -33,6 +33,12 @@ typedef struct s_color {
 	int	flag;
 }	t_color;
 
+typedef struct s_player {
+	int		x;
+	int		y;
+	char	view;
+}	t_player;
+
 typedef struct s_info {
 	t_color ceiling;
 	t_color	floor;
@@ -45,16 +51,21 @@ typedef struct s_info {
 }	t_info;
 
 	typedef struct s_pars{
-	int		fd;
-	int		x;
-    int		y;
-	int		curr_x;
-	int		curr_y;
-	char	**matrix;
-	char	*gnl;
-	int		rows;
-	int		comma_counter;
-	t_info	info;
+	int			fd;
+	int			x;
+    int			y;
+	char		**matrix;
+	char		*gnl;
+	int			rows;
+	int			comma_counter;
+	int			i;
+	int			a;
+	int			counter;
+	int			color;
+	char		*str;
+	int			space_flag;
+	t_info		info;
+	t_player	player;
 	}	t_pars;
 
 void	ft_error(char *str);
@@ -80,4 +91,5 @@ void	save_east(t_pars *pars);
 void	save_west(t_pars *pars);
 
 void	save_background(t_pars *pars);
-void	save_colors(t_pars *pars, int color, char *str);
+void	background_cycle(t_pars *pars);
+void	save_colors(t_pars *pars);

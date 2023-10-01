@@ -6,8 +6,6 @@ void	get_info(t_pars *pars)
 	pars->gnl = get_next_line(pars->fd);
 	while(pars->gnl && pars->info.count_info < 6 && pars->gnl[0] != ' ' && pars->gnl[0] != '1')
 	{
-		free(pars->gnl);
-		pars->gnl = get_next_line(pars->fd);
 		if (ft_gnllen(pars->gnl) > 0 && ft_gnllen(pars->gnl) < 6)
 			ft_error("Invalid parameters");
 		if (ft_gnllen(pars->gnl) >= 6)
@@ -25,11 +23,13 @@ void	get_info(t_pars *pars)
 				else if(pars->gnl[0] == 'F' && pars->gnl[1] == ' ')
 					save_background(pars);
 				else
-					ft_error("Invalid parameteeers");				
+					ft_error("Invalid parameteeers");
+				free(pars->gnl);
+				pars->gnl = get_next_line(pars->fd);
 			}
 	}
 	free(pars->gnl);
-		if(pars->info.ceiling.blue == -1 || pars->info.floor.blue == -1  || pars->info.count_info != 6)
+		if(pars->info.count_info != 6)
 	{
 		//free();
 		ft_error("Wrong parameteeers1\n");

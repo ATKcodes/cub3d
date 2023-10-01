@@ -4,8 +4,8 @@ SRCS = 	 cub3d.c cub3d_utils.c gnl/get_next_line.c error.c gnl/get_next_line_uti
 
 OBJS = ${SRCS:.c=.o}
 
-# CC		= gcc
-CC		= gcc -g -fsanitize=address
+CC		= gcc
+# CC		= gcc -g -fsanitize=address
 RM		= rm -f
 
 CFLAGS = -Wall -Wextra -Werror
