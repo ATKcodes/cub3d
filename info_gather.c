@@ -24,9 +24,11 @@ void	get_info(t_pars *pars)
 					save_background(pars);
 				else
 					ft_error("Invalid parameteeers");
-				free(pars->gnl);
-				pars->gnl = get_next_line(pars->fd);
+				
 			}
+			free(pars->gnl);
+			pars->gnl = get_next_line(pars->fd);
+			
 	}
 	free(pars->gnl);
 		if(pars->info.count_info != 6)

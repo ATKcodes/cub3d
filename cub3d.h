@@ -16,6 +16,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "gnl/get_next_line.h"
+#include "minilibx-linux/mlx.h"
 
 typedef struct s_data {
 	void	*img;
@@ -31,6 +32,7 @@ typedef struct s_color {
 	int green;
 	int	blue;
 	int	flag;
+	int	hex;
 }	t_color;
 
 typedef struct s_player {
@@ -50,6 +52,12 @@ typedef struct s_info {
 	int		count_info;
 }	t_info;
 
+typedef struct s_mlx{
+	void *mlx_init;
+	void *mlx_win;
+
+}t_mlx;
+
 	typedef struct s_pars{
 	int			fd;
 	int			x;
@@ -66,6 +74,7 @@ typedef struct s_info {
 	int			space_flag;
 	t_info		info;
 	t_player	player;
+	t_mlx		mlx;
 	}	t_pars;
 
 void	ft_error(char *str);
@@ -93,3 +102,5 @@ void	save_west(t_pars *pars);
 void	save_background(t_pars *pars);
 void	background_cycle(t_pars *pars);
 void	save_colors(t_pars *pars);
+
+void    new_window(t_pars *pars);

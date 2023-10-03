@@ -23,9 +23,10 @@ int		ft_gnllen(char *str)
 void	ft_putstr(char *str)
 {
 	int	i = -1;
+	int	a;
 
 	while (str[++i])
-		write(1, &str[i], 1);
+		a += write(1, &str[i], 1);
 }
 
 int	ft_is_comma_num(int c, t_pars *pars)

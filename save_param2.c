@@ -45,7 +45,6 @@ void	background_cycle(t_pars *pars)
 			pars->a--;
 		}
 		pars->str[pars->counter] = '\0';
-	printf("%s\n",pars->str);
 	pars->i++;
 	save_colors(pars);
 	pars->color++;
