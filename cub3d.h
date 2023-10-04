@@ -53,9 +53,9 @@ typedef struct s_info {
 }	t_info;
 
 typedef struct s_mlx{
-	void *mlx_init;
-	void *mlx_win;
-
+	void	*mlx_init;
+	void	*mlx_win;
+	t_data	img;
 }t_mlx;
 
 	typedef struct s_pars{
@@ -103,4 +103,6 @@ void	save_background(t_pars *pars);
 void	background_cycle(t_pars *pars);
 void	save_colors(t_pars *pars);
 
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void    new_window(t_pars *pars);
+void    rgb_to_hex(t_pars *pars);

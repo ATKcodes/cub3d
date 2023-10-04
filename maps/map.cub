@@ -1,10 +1,10 @@
-EA ./texture/ciao.xpm
-NO ./texture/ciao.xpm
-SO ./texture/ciao.xpm
-WE ./texture/ciao.xpm
+EA ./texture/Sides_wall.xpm
+NO ./texture/NO_wall.xpm
+SO ./texture/SO_wall.xpm
+WE ./texture/Sides_wall.xpm
 
-C 2,2,2
-F 1,23,23
+C 65,65,230
+F 130,130,133
 
 11111111111111111111111111111
     1000000000110000000000001

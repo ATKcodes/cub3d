@@ -29,8 +29,6 @@ void	parsing(t_pars *pars)
 	}
 	check_characters(pars);
 	check_borders(pars);
-	for (int d = 0; d < pars->rows; d++)
-		printf("%s\n", pars->matrix[d]);
 }
 
 int	main(int argc, char *argv[])

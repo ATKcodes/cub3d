@@ -84,7 +84,7 @@ void	check_rows(t_pars *pars)
 				&& pars->matrix[pars->y - 1][pars->x] != '0'))
 		{
 			//free(pars);
-			// printf("is : %c\n", pars->matrix[pars->y - 1][pars->x]);
+			// ("is : %c\n", pars->matrix[pars->y - 1][pars->x]);
 			ft_error("Invalid map2\n");
 		}
 		else if (pars->matrix[pars->y][pars->x] == '0'
@@ -92,8 +92,6 @@ void	check_rows(t_pars *pars)
 				&& pars->matrix[pars->y + 1][pars->x] != '0'))
 		{
 			//free(pars);
-			printf("is : %c\n", pars->matrix[pars->y][pars->x] );
-			printf("is : %c-\n", pars->matrix[pars->y + 1][pars->x]);
 			ft_error("Invalid map3\n");
 		}
 		else if (pars->matrix[pars->y][pars->x] == '0'

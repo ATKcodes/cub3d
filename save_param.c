@@ -15,7 +15,6 @@ void	save_north(t_pars *pars)
 	while (++i + 3 < ft_gnllen(pars->gnl))
 		pars->info.NO.addr[i] = pars->gnl[i + 3];
 	pars->info.NO.addr[i] = '\0';
-	printf("%s\n", pars->info.NO.addr);
 	fd = open(pars->info.NO.addr, O_RDONLY);
 	close(fd);
 	if(fd == -1)
@@ -42,7 +41,6 @@ void	save_south(t_pars *pars)
 	while (++i + 3 < ft_gnllen(pars->gnl))
 		pars->info.SO.addr[i] = pars->gnl[i + 3];
 	pars->info.SO.addr[i] = '\0';
-	printf("%s\n", pars->info.SO.addr);
 	fd = open(pars->info.SO.addr, O_RDONLY);
 	close(fd);
 	if(fd == -1)
@@ -69,7 +67,6 @@ void	save_east(t_pars *pars)
 	while (++i + 3 < ft_gnllen(pars->gnl))
 		pars->info.EA.addr[i] = pars->gnl[i + 3];
 	pars->info.EA.addr[i] = '\0';
-	printf("%s\n", pars->info.EA.addr);
 	fd = open(pars->info.EA.addr, O_RDONLY);
 	close(fd);
 	if(fd == -1)
@@ -96,7 +93,6 @@ void	save_west(t_pars *pars)
 	while (++i + 3 < ft_gnllen(pars->gnl))
 		pars->info.WE.addr[i] = pars->gnl[i + 3];
 	pars->info.WE.addr[i] = '\0';
-	printf("%s\n", pars->info.WE.addr);
 	fd = open(pars->info.WE.addr, O_RDONLY);
 	close(fd);
 	if(fd == -1)
