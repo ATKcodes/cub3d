@@ -13,6 +13,8 @@ void    new_window(t_pars *pars)
     pars->mlx.mlx_init = mlx_init();
     pars->mlx.mlx_win = mlx_new_window(pars->mlx.mlx_init, 1920, 1080, "cub3d");
 	rgb_to_hex(pars);
+	set_orientation(pars);
+	set_plane(pars);
     mlx_loop(pars->mlx.mlx_init);
 }
 
@@ -39,4 +41,48 @@ void    rgb_to_hex(t_pars *pars)
 		}
 	}
 	mlx_put_image_to_window(pars->mlx.mlx_init, pars->mlx.mlx_win, pars->mlx.img.img, 0, 0);
-} 
+}
+
+void	set_orientation(t_pars *pars)
+{
+	if(pars->player.view == 'N')
+		{
+			pars->player.dir_x = 0;
+			pars->player.dir_y = -1;
+		}
+	else if(pars->player.view == 'S')
+		{
+			pars->player.dir_x = 0;
+			pars->player.dir_y = 1;
+		}
+	else if(pars->player.view == 'E')
+		{
+			pars->player.dir_x = 1;
+			pars->player.dir_y = 0;
+		}
+	else if(pars->player.view == 'W')
+		{
+			pars->player.dir_x = -1;
+			pars->player.dir_y = 0;
+		}
+}
+
+void	set_plane(t_pars *pars)
+{
+	if(pars->player.dir_x == 0)
+		{
+			if(pars->player.dir_y == 1)
+				pars->player.plane.x = -1;
+			else
+				pars->player.plane.x = 1;
+			pars->player.plane.y = 0;	
+		}
+	else
+		{
+			if(pars->player.dir_x == 1)
+				pars->player.plane.y = 1;
+			else
+				pars->player.plane.y = -1;
+			pars->player.plane.x = 0;
+		}
+}

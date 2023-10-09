@@ -18,6 +18,13 @@
 #include "gnl/get_next_line.h"
 #include "minilibx-linux/mlx.h"
 
+typedef struct s_point{
+	double x;
+	double y;
+	double dir_x;
+	double dir_y;
+}t_point;
+
 typedef struct s_data {
 	void	*img;
 	char	*addr;
@@ -36,8 +43,11 @@ typedef struct s_color {
 }	t_color;
 
 typedef struct s_player {
-	int		x;
-	int		y;
+	double		x;
+	double		y;
+	double		dir_x;
+	double		dir_y;
+	t_point		plane;
 	char	view;
 }	t_player;
 
@@ -106,3 +116,5 @@ void	save_colors(t_pars *pars);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void    new_window(t_pars *pars);
 void    rgb_to_hex(t_pars *pars);
+void	set_orientation(t_pars *pars);
+void	set_plane(t_pars *pars);

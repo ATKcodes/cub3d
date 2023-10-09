@@ -33,8 +33,8 @@ void	check_characters(t_pars *pars)
 			{
 				if ((pars->matrix[i][d] == 'N' || pars->matrix[i][d] == 'S' || pars->matrix[i][d] == 'E' || pars->matrix[i][d] == 'W') && counter == 0)
 				{
-					pars->player.y = i;
-					pars->player.x = d;
+					pars->player.y = (float)i + 0.5;
+					pars->player.x = (float)d + 0.5;
 					pars->player.view = pars->matrix[i][d];
 					pars->matrix[i][d] = '0';
 					counter++;
