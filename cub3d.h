@@ -51,6 +51,20 @@ typedef struct s_player {
 	char	view;
 }	t_player;
 
+typedef struct s_ray
+{
+	t_point	ray_dir;
+	t_point	side_dist;
+	t_point	delta_dist;
+	int		map_x;
+	int		map_y;
+	double	perp_wall_dist;
+	int		step_x;
+	int		step_y;
+	int		side;
+	double	ratio;
+}			t_ray;
+
 typedef struct s_info {
 	t_color ceiling;
 	t_color	floor;
@@ -66,9 +80,9 @@ typedef struct s_mlx{
 	void	*mlx_init;
 	void	*mlx_win;
 	t_data	img;
-}t_mlx;
+}	t_mlx;
 
-	typedef struct s_pars{
+typedef struct s_pars{
 	int			fd;
 	int			x;
     int			y;
@@ -85,7 +99,7 @@ typedef struct s_mlx{
 	t_info		info;
 	t_player	player;
 	t_mlx		mlx;
-	}	t_pars;
+}	t_pars;
 
 void	ft_error(char *str);
 
@@ -118,3 +132,11 @@ void    new_window(t_pars *pars);
 void    rgb_to_hex(t_pars *pars);
 void	set_orientation(t_pars *pars);
 void	set_plane(t_pars *pars);
+void	draw_game(t_pars *pars);
+t_ray	raycast(t_pars *pars, double camera_x);
+void	set_perp_wall_dist(t_ray *ray, t_pars *pars);
+void	update_ray(t_ray *ray, int axis);
+void	set_ray(t_pars *pars, t_ray *ray, double camera_x);
+void	set_step(t_ray *ray);
+void	set_delta_dist(t_ray *ray);
+void	set_side_dist(t_ray *ray, t_pars *pars);
