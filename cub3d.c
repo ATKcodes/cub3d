@@ -49,5 +49,8 @@ int	main(int argc, char *argv[])
 	init_flags(&pars);
 	get_info(&pars);
 	parsing(&pars);
+	xpm_init(&pars);
 	new_window(&pars);
+	draw_game(&pars);
+	  mlx_loop(pars.mlx.mlx_init);
 }

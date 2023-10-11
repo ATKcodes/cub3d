@@ -17,6 +17,29 @@
 #include <string.h>
 #include "gnl/get_next_line.h"
 #include "minilibx-linux/mlx.h"
+# define WIN_SIZE_H 1080
+# define TILE_SIZE 64
+# define WIN_SIZE_W 1920
+
+typedef struct s_img_info
+{
+	unsigned int	*buf;
+	int				bpp;
+	int				size_line;
+	int				endian;
+
+}t_img_info;
+
+typedef struct s_render_info
+{
+	double					tex_pos;
+	int						tex_x;
+	int						tex_y;
+	double					ratio;
+	int						line_height;
+	int						start_y;
+	int						end_y;
+}t_render_info;
 
 typedef struct s_point{
 	double x;
@@ -26,6 +49,7 @@ typedef struct s_point{
 }t_point;
 
 typedef struct s_data {
+	char	*path;
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -132,6 +156,7 @@ void    new_window(t_pars *pars);
 void    rgb_to_hex(t_pars *pars);
 void	set_orientation(t_pars *pars);
 void	set_plane(t_pars *pars);
+void    xpm_init(t_pars *pars);
 void	draw_game(t_pars *pars);
 t_ray	raycast(t_pars *pars, double camera_x);
 void	set_perp_wall_dist(t_ray *ray, t_pars *pars);
@@ -140,3 +165,8 @@ void	set_ray(t_pars *pars, t_ray *ray, double camera_x);
 void	set_step(t_ray *ray);
 void	set_delta_dist(t_ray *ray);
 void	set_side_dist(t_ray *ray, t_pars *pars);
+
+void	draw_wall(t_pars *pars, t_ray *ray, int x);
+void	draw_pixel(t_data *data, int x, int y, int color);
+unsigned int	get_img_color(t_data *data, int x, int y);
+int	get_texture_scaled_x(t_pars *pars, t_ray *ray);

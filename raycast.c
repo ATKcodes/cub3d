@@ -73,7 +73,7 @@ void	draw_game(t_pars *pars)
 	{
 		camera_x = 2 * x / (double)1920 - 1;
 		ray = raycast(pars, camera_x);
-		//draw_wall(pars, &ray, x);
+		draw_wall(pars, &ray, x);
 		x++;
 	}
 	mlx_put_image_to_window(pars->mlx.mlx_init, pars->mlx.mlx_win,

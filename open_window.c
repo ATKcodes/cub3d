@@ -15,7 +15,7 @@ void    new_window(t_pars *pars)
 	rgb_to_hex(pars);
 	set_orientation(pars);
 	set_plane(pars);
-    mlx_loop(pars->mlx.mlx_init);
+    // mlx_loop(pars->mlx.mlx_init);
 }
 
 void    rgb_to_hex(t_pars *pars)
