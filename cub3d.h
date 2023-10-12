@@ -20,6 +20,7 @@
 # define WIN_SIZE_H 1080
 # define TILE_SIZE 64
 # define WIN_SIZE_W 1920
+# define MOVESTEP 0.4
 
 typedef struct s_img_info
 {
@@ -170,3 +171,5 @@ void	draw_wall(t_pars *pars, t_ray *ray, int x);
 void	draw_pixel(t_data *data, int x, int y, int color);
 unsigned int	get_img_color(t_data *data, int x, int y);
 int	get_texture_scaled_x(t_pars *pars, t_ray *ray);
+int moves(int key, t_pars *pars);
+int	moves_loop(t_pars *pars, int key);

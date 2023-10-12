@@ -69,6 +69,7 @@ void	draw_game(t_pars *pars)
 	double	camera_x;
 
 	x = 0;
+	mlx_clear_window(pars->mlx.mlx_init, pars->mlx.mlx_win);
 	while (x < 1920)
 	{
 		camera_x = 2 * x / (double)1920 - 1;
