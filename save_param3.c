@@ -9,8 +9,6 @@
 								
     pars->info.SO.img = mlx_xpm_file_to_image(pars->mlx.mlx_init,
                             pars->info.SO.addr, &width, &height);
-							printf("%s\n\n\n\n", pars->info.SO.addr);
-							printf("error");
      pars->info.SO.addr = mlx_get_data_addr(pars->info.SO.img, &pars->info.SO.bits_per_pixel, &pars->info.SO.line_length, &pars->info.SO.endian);
 	if (!pars->info.SO.img)
 	{

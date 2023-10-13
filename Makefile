@@ -8,7 +8,7 @@ OBJS = ${SRCS:.c=.o}
  CC		= gcc -g -fsanitize=address
 RM		= rm -f
 
-CFLAGS = -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3
+CFLAGS = -I/usr/include -Imlx_linux -O3
 #CFLAGS = -g
 
 %.o: %.c
