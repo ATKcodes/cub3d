@@ -16,12 +16,12 @@ void	save_north(t_pars *pars)
 		pars->info.NO.addr[i] = pars->gnl[i + 3];
 	pars->info.NO.addr[i] = '\0';
 	fd = open(pars->info.NO.addr, O_RDONLY);
-	close(fd);
+	
 	if(fd == -1)
 	{
-		// free();
 		ft_error("Wrong address\n");
 	}
+	close(fd);
 	pars->info.NO.flag++;
 	pars->info.count_info++;
 }
@@ -42,12 +42,13 @@ void	save_south(t_pars *pars)
 		pars->info.SO.addr[i] = pars->gnl[i + 3];
 	pars->info.SO.addr[i] = '\0';
 	fd = open(pars->info.SO.addr, O_RDONLY);
-	close(fd);
+	
 	if(fd == -1)
 	{
 		// free();
 		ft_error("Wrong address\n");
 	}
+	close(fd);
 	pars->info.SO.flag++;
 	pars->info.count_info++;
 }
@@ -68,12 +69,13 @@ void	save_east(t_pars *pars)
 		pars->info.EA.addr[i] = pars->gnl[i + 3];
 	pars->info.EA.addr[i] = '\0';
 	fd = open(pars->info.EA.addr, O_RDONLY);
-	close(fd);
+	
 	if(fd == -1)
 	{
-		// free();
+		// free
 		ft_error("Wrong address\n");
 	}
+	close(fd);
 	pars->info.EA.flag++;
 	pars->info.count_info++;
 }
@@ -83,6 +85,7 @@ void	save_west(t_pars *pars)
 	int	fd;
 	int	i;
 
+	//free(pars->gnl);
 	i = -1;
 	if (pars->info.WE.flag != 0)
 	{
@@ -94,12 +97,15 @@ void	save_west(t_pars *pars)
 		pars->info.WE.addr[i] = pars->gnl[i + 3];
 	pars->info.WE.addr[i] = '\0';
 	fd = open(pars->info.WE.addr, O_RDONLY);
-	close(fd);
+	
 	if(fd == -1)
 	{
-		// free();
 		ft_error("Wrong address\n");
+		free(pars->gnl);
+		//close(fd);
+		free_matrix(pars);
 	}
+	close(fd);
 	pars->info.WE.flag++;
 	pars->info.count_info++;
 }

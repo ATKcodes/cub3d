@@ -20,7 +20,8 @@
 # define WIN_SIZE_H 1080
 # define TILE_SIZE 64
 # define WIN_SIZE_W 1920
-# define MOVESTEP 0.4
+# define MOVESTEP 0.25
+# define ROTATE_G 0.15
 
 typedef struct s_img_info
 {
@@ -29,7 +30,7 @@ typedef struct s_img_info
 	int				size_line;
 	int				endian;
 
-}t_img_info;
+}	t_img_info;
 
 typedef struct s_render_info
 {
@@ -40,14 +41,14 @@ typedef struct s_render_info
 	int						line_height;
 	int						start_y;
 	int						end_y;
-}t_render_info;
+}	t_render_info;
 
 typedef struct s_point{
 	double x;
 	double y;
 	double dir_x;
 	double dir_y;
-}t_point;
+}	t_point;
 
 typedef struct s_data {
 	char	*path;
@@ -57,7 +58,7 @@ typedef struct s_data {
 	int		line_length;
 	int		endian;
 	int		flag;
-}				t_data;
+}	t_data;
 
 typedef struct s_color {
 	int red;
@@ -88,7 +89,7 @@ typedef struct s_ray
 	int		step_y;
 	int		side;
 	double	ratio;
-}			t_ray;
+}	t_ray;
 
 typedef struct s_info {
 	t_color ceiling;
@@ -152,24 +153,36 @@ void	save_background(t_pars *pars);
 void	background_cycle(t_pars *pars);
 void	save_colors(t_pars *pars);
 
+void    xpm_init(t_pars *pars);
+
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void    new_window(t_pars *pars);
 void    rgb_to_hex(t_pars *pars);
 void	set_orientation(t_pars *pars);
 void	set_plane(t_pars *pars);
-void    xpm_init(t_pars *pars);
+
+void	set_ray(t_pars *pars, t_ray *ray, double camera_x);
 void	draw_game(t_pars *pars);
 t_ray	raycast(t_pars *pars, double camera_x);
 void	set_perp_wall_dist(t_ray *ray, t_pars *pars);
 void	update_ray(t_ray *ray, int axis);
-void	set_ray(t_pars *pars, t_ray *ray, double camera_x);
+
 void	set_step(t_ray *ray);
 void	set_delta_dist(t_ray *ray);
 void	set_side_dist(t_ray *ray, t_pars *pars);
+void	rotate_player(t_pars *pars, int key, double angle);
 
-void	draw_wall(t_pars *pars, t_ray *ray, int x);
-void	draw_pixel(t_data *data, int x, int y, int color);
+void			draw_wall(t_pars *pars, t_ray *ray, int x);
+void			draw_pixel(t_data *data, int x, int y, int color);
 unsigned int	get_img_color(t_data *data, int x, int y);
-int	get_texture_scaled_x(t_pars *pars, t_ray *ray);
-int moves(int key, t_pars *pars);
-int	moves_loop(t_pars *pars, int key);
+int				get_texture_scaled_x(t_pars *pars, t_ray *ray);
+t_render_info	get_render_info(t_ray *ray, t_pars *pars);
+
+int		moves(int key, t_pars *pars);
+void	moves_loop(t_pars *pars, int key);
+void	moves_loop2(t_pars *pars, int key);
+void	update_player_position(t_pars *temp, int key);
+int		check_wall_collision(t_pars *pars, int key);
+void	free_images (t_pars *pars);
+void	free_all(t_pars	*pars);
+void	free_matrix(t_pars	*pars);

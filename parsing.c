@@ -13,7 +13,7 @@ void	count_rows(t_pars *pars)
 		pars->rows++;
 	}
 	close(pars->fd);
-	pars->matrix = malloc (sizeof(char *) * (pars->rows));
+	pars->matrix = calloc (sizeof(char *) * (pars->rows), 1); //tADD FTCALLOC
 }
 
 void	check_characters(t_pars *pars)
@@ -41,8 +41,8 @@ void	check_characters(t_pars *pars)
 				}
 				else
 				{
-					// free_matrix(pars);
 					ft_error("Invalid characters\n");
+					free_matrix(pars);
 				}
 			}
 		}

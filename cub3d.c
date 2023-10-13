@@ -26,6 +26,7 @@ void	parsing(t_pars *pars)
 		while(++d < ft_gnllen(pars->gnl))
 			pars->matrix[i][d] = pars->gnl[d]; 
 		pars->matrix[i][d] = '\0';
+		free(pars->gnl);
 	}
 	check_characters(pars);
 	check_borders(pars);
@@ -54,5 +55,6 @@ int	main(int argc, char *argv[])
 	
 	draw_game(&pars);
 	mlx_key_hook(pars.mlx.mlx_win, moves, &pars);
+	mlx_hook(pars.mlx.mlx_win,17 , 0, (void *)free_all, &pars);
 	mlx_loop(pars.mlx.mlx_init);
 }

@@ -4,6 +4,7 @@ void	get_info(t_pars *pars)
 {
 	pars->info.count_info = 0;
 	pars->gnl = get_next_line(pars->fd);
+	//printf("DEBUG: %s", pars->gnl);
 	while(pars->gnl && pars->info.count_info < 6 && pars->gnl[0] != ' ' && pars->gnl[0] != '1')
 	{
 		if (ft_gnllen(pars->gnl) > 0 && ft_gnllen(pars->gnl) < 6)
@@ -27,11 +28,11 @@ void	get_info(t_pars *pars)
 				
 			}
 			free(pars->gnl);
+			//printf("DEBUG: %s", pars->gnl);
 			pars->gnl = get_next_line(pars->fd);
-			
 	}
 	free(pars->gnl);
-		if(pars->info.count_info != 6)
+	if(pars->info.count_info != 6)
 	{
 		//free();
 		ft_error("Wrong parameteeers1\n");
