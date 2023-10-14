@@ -6,23 +6,25 @@ void	save_north(t_pars *pars)
 	int	i;
 
 	i = -1;
-	if (pars->info.NO.flag != 0)
+	if (pars->info.no.flag != 0)
 	{
-		//free();
 		ft_error("Wrong parameters\n");
+		free (pars->gnl);
+		free_matrix(pars);
 	}
-	pars->info.NO.addr = malloc (ft_gnllen(pars->gnl) - 2);
+	pars->info.no.flag++;
+	pars->info.no.addr = malloc (ft_gnllen(pars->gnl) - 2);
 	while (++i + 3 < ft_gnllen(pars->gnl))
-		pars->info.NO.addr[i] = pars->gnl[i + 3];
-	pars->info.NO.addr[i] = '\0';
-	fd = open(pars->info.NO.addr, O_RDONLY);
-	
+		pars->info.no.addr[i] = pars->gnl[i + 3];
+	pars->info.no.addr[i] = '\0';
+	fd = open(pars->info.no.addr, O_RDONLY);
 	if(fd == -1)
 	{
 		ft_error("Wrong address\n");
+		free (pars->gnl);
+		free_matrix(pars);
 	}
 	close(fd);
-	pars->info.NO.flag++;
 	pars->info.count_info++;
 }
 
@@ -32,24 +34,25 @@ void	save_south(t_pars *pars)
 	int	i;
 
 	i = -1;
-	if (pars->info.SO.flag != 0)
+	if (pars->info.so.flag != 0)
 	{
-		//free();
 		ft_error("Wrong parameters\n");
+		free (pars->gnl);
+		free_matrix(pars);
 	}
-	pars->info.SO.addr = malloc (ft_gnllen(pars->gnl) - 2);
+	pars->info.so.flag++;
+	pars->info.so.addr = malloc (ft_gnllen(pars->gnl) - 2);
 	while (++i + 3 < ft_gnllen(pars->gnl))
-		pars->info.SO.addr[i] = pars->gnl[i + 3];
-	pars->info.SO.addr[i] = '\0';
-	fd = open(pars->info.SO.addr, O_RDONLY);
-	
+		pars->info.so.addr[i] = pars->gnl[i + 3];
+	pars->info.so.addr[i] = '\0';
+	fd = open(pars->info.so.addr, O_RDONLY);
 	if(fd == -1)
 	{
-		// free();
 		ft_error("Wrong address\n");
+		free (pars->gnl);
+		free_matrix(pars);
 	}
 	close(fd);
-	pars->info.SO.flag++;
 	pars->info.count_info++;
 }
 
@@ -59,24 +62,25 @@ void	save_east(t_pars *pars)
 	int	i;
 
 	i = -1;
-	if (pars->info.EA.flag != 0)
+	if (pars->info.ea.flag != 0)
 	{
-		//free();
 		ft_error("Wrong parameters\n");
+		free (pars->gnl);
+		free_matrix(pars);
 	}
-	pars->info.EA.addr = malloc (ft_gnllen(pars->gnl) - 2);
+	pars->info.ea.flag++;
+	pars->info.ea.addr = malloc (ft_gnllen(pars->gnl) - 2);
 	while (++i + 3 < ft_gnllen(pars->gnl))
-		pars->info.EA.addr[i] = pars->gnl[i + 3];
-	pars->info.EA.addr[i] = '\0';
-	fd = open(pars->info.EA.addr, O_RDONLY);
-	
+		pars->info.ea.addr[i] = pars->gnl[i + 3];
+	pars->info.ea.addr[i] = '\0';
+	fd = open(pars->info.ea.addr, O_RDONLY);
 	if(fd == -1)
 	{
-		// free
 		ft_error("Wrong address\n");
+		free(pars->gnl);
+		free_matrix(pars);
 	}
 	close(fd);
-	pars->info.EA.flag++;
 	pars->info.count_info++;
 }
 
@@ -85,36 +89,34 @@ void	save_west(t_pars *pars)
 	int	fd;
 	int	i;
 
-	//free(pars->gnl);
 	i = -1;
-	if (pars->info.WE.flag != 0)
+	if (pars->info.we.flag != 0)
 	{
-		//free();
 		ft_error("Wrong parameters\n");
+		free (pars->gnl);
+		free_matrix(pars);
 	}
-	pars->info.WE.addr = malloc (ft_gnllen(pars->gnl) - 2);
+	pars->info.we.flag++;
+	pars->info.we.addr = malloc (ft_gnllen(pars->gnl) - 2);
 	while (++i + 3 < ft_gnllen(pars->gnl))
-		pars->info.WE.addr[i] = pars->gnl[i + 3];
-	pars->info.WE.addr[i] = '\0';
-	fd = open(pars->info.WE.addr, O_RDONLY);
-	
+		pars->info.we.addr[i] = pars->gnl[i + 3];
+	pars->info.we.addr[i] = '\0';
+	fd = open(pars->info.we.addr, O_RDONLY);
 	if(fd == -1)
 	{
 		ft_error("Wrong address\n");
-		free(pars->gnl);
-		//close(fd);
+		free (pars->gnl);
 		free_matrix(pars);
 	}
 	close(fd);
-	pars->info.WE.flag++;
 	pars->info.count_info++;
 }
 void init_flags(t_pars *pars)
 {
-	pars->info.NO.flag = 0;
-	pars->info.EA.flag = 0;
-	pars->info.WE.flag = 0;
-	pars->info.SO.flag = 0;
+	pars->info.no.flag = 0;
+	pars->info.ea.flag = 0;
+	pars->info.we.flag = 0;
+	pars->info.so.flag = 0;
 	pars->info.ceiling.flag = 0;
 	pars->info.floor.flag = 0;
 	pars->info.floor.red = -1;

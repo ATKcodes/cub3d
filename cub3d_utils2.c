@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   cub3d_utils2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amaso <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/14 20:25:39 by amaso             #+#    #+#             */
-/*   Updated: 2023/10/14 20:25:43 by amaso            ###   ########.fr       */
+/*   Created: 2023/10/14 20:14:31 by amaso             #+#    #+#             */
+/*   Updated: 2023/10/14 20:14:36 by amaso            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	ft_error(char *str)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	ft_putstr("Error\n");
-	ft_putstr(str);
+	unsigned int	i;
+	char			*str;
+
+	str = s;
+	i = 0;
+	while (i < n)
+	{
+		str[i] = c;
+		i++;
+	}
+	return (s);
 }

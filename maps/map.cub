@@ -1,7 +1,7 @@
 EA ./texture/Sides_wall.xpm
 NO ./texture/NO_wall.xpm
 SO ./texture/SO_wall.xpm
-WE ./texture/Sides_wall.xp
+WE ./texture/Sides_wall.xpm
 
 C 65,65,230
 F 130,130,133

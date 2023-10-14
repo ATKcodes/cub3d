@@ -3,6 +3,7 @@
 void	count_rows(t_pars *pars)
 {
 	pars->rows = 0;
+	pars->gnl = NULL;
 	pars->gnl = get_next_line(pars->fd);
 	if (pars->gnl == NULL || pars->gnl == 0)
 		ft_error("Invalid reading\n");
@@ -12,6 +13,7 @@ void	count_rows(t_pars *pars)
 		pars->gnl = get_next_line(pars->fd);
 		pars->rows++;
 	}
+	free (pars->gnl);
 	close(pars->fd);
 	pars->matrix = calloc (sizeof(char *) * (pars->rows), 1); //tADD FTCALLOC
 }
@@ -60,8 +62,8 @@ void	check_borders(t_pars *pars)
 		{
 			if(pars->matrix[pars->y][pars->x] != '1' && pars->matrix[pars->y][pars->x] != ' ')
 				{
-					//free_matrix(pars);
-					ft_error("Invalid Mapssss\n"); 
+					ft_error("Invalid Map\n"); 
+					free_matrix(pars);
 				}
 			pars->x++;
 		} 
@@ -72,42 +74,47 @@ void	check_borders(t_pars *pars)
 
 void	check_rows(t_pars *pars)
 {
-	while(pars->y != 0 && pars->y != pars->rows - 1 && pars->x < ft_strlen(pars->matrix[pars->y]) )
+	while(pars->y != 0 && pars->y != pars->rows - 1
+		&& pars->x < ft_strlen(pars->matrix[pars->y]))
 	{
 		if(pars->x == 0 && pars->matrix[pars->y][pars->x] == '0')
 		{
-			//free(pars);
-			ft_error("Invalid map1\n");
+			free_matrix(pars);
+			ft_error("Invalid map\n");
 		}
 		else if (pars->matrix[pars->y][pars->x] == '0'
 			&& (pars->matrix[pars->y - 1][pars->x] != '1'
 				&& pars->matrix[pars->y - 1][pars->x] != '0'))
 		{
-			//free(pars);
-			// ("is : %c\n", pars->matrix[pars->y - 1][pars->x]);
-			ft_error("Invalid map2\n");
+			free_matrix(pars);
+			ft_error("Invalid map\n");
 		}
-		else if (pars->matrix[pars->y][pars->x] == '0'
-			&& (pars->matrix[pars->y + 1][pars->x] != '1'
-				&& pars->matrix[pars->y + 1][pars->x] != '0'))
-		{
-			//free(pars);
-			ft_error("Invalid map3\n");
-		}
-		else if (pars->matrix[pars->y][pars->x] == '0'
-			&& (pars->matrix[pars->y][pars->x + 1] != '1'
-				&& pars->matrix[pars->y][pars->x + 1] != '0'))
-		{
-			//free(pars);
-			ft_error("Invalid map4\n");
-		}
-		else if (pars->matrix[pars->y][pars->x] == '0'
-			&& (pars->matrix[pars->y][pars->x - 1] != '1'
-				&& pars->matrix[pars->y][pars->x - 1] != '0'))
-		{
-			//free(pars);
-			ft_error("Invalid map5\n");
-		}
+		check_rows2(pars);
 		pars->x++;
+	}
+}
+
+void	check_rows2(t_pars *pars)
+{
+	if (pars->matrix[pars->y][pars->x] == '0'
+		&& (pars->matrix[pars->y + 1][pars->x] != '1'
+			&& pars->matrix[pars->y + 1][pars->x] != '0'))
+	{
+		ft_error("Invalid map\n");
+		free_matrix(pars);
+	}
+	else if (pars->matrix[pars->y][pars->x] == '0'
+		&& (pars->matrix[pars->y][pars->x + 1] != '1'
+			&& pars->matrix[pars->y][pars->x + 1] != '0'))
+	{
+		ft_error("Invalid map\n");
+		free_matrix(pars);
+	}
+	else if (pars->matrix[pars->y][pars->x] == '0'
+		&& (pars->matrix[pars->y][pars->x - 1] != '1'
+			&& pars->matrix[pars->y][pars->x - 1] != '0'))
+	{
+		ft_error("Invalid map\n");
+		free_matrix(pars);
 	}
 }

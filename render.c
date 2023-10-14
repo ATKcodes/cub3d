@@ -67,13 +67,13 @@ void	draw_wall(t_pars *pars, t_ray *ray, int x)
 	{
 		info.tex_y = (int)info.tex_pos & (TILE_SIZE - 1);
 		if (ray->side == 0 && ray->ray_dir.x > 0)
-			color = get_img_color(&pars->info.NO, info.tex_x, info.tex_y);
+			color = get_img_color(&pars->info.no, info.tex_x, info.tex_y);
 		else if (ray->side == 0 && ray->ray_dir.x < 0)
-			color = get_img_color(&pars->info.SO, info.tex_x, info.tex_y);
+			color = get_img_color(&pars->info.so, info.tex_x, info.tex_y);
 		else if (ray->side == 1 && ray->ray_dir.y > 0)
-			color = get_img_color(&pars->info.EA, info.tex_x, info.tex_y);
+			color = get_img_color(&pars->info.ea, info.tex_x, info.tex_y);
 		else if (ray->side == 1 && ray->ray_dir.y < 0)
-			color = get_img_color(&pars->info.WE, info.tex_x, info.tex_y);
+			color = get_img_color(&pars->info.we, info.tex_x, info.tex_y);
 		draw_pixel(img_info, x, info.start_y, color);
 		my_mlx_pixel_put(&pars->mlx.img, x, info.start_y, color);
 		info.tex_pos += info.ratio;

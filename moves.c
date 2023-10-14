@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   moves.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amaso <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/14 20:29:44 by amaso             #+#    #+#             */
+/*   Updated: 2023/10/14 20:29:46 by amaso            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 void	moves_loop(t_pars *pars, int key)
 {
 	if (check_wall_collision(pars, key))
 		return ;
-    if (key == 115)
+	if (key == 115)
 	{
 		pars->player.x -= pars->player.dir_x * MOVESTEP;
 		pars->player.y -= pars->player.dir_y * MOVESTEP;
@@ -30,25 +42,25 @@ void	moves_loop(t_pars *pars, int key)
 void	moves_loop2(t_pars *pars, int key)
 {
 	if (key == 65361 || key == 65363)
- 		rotate_player(pars, key, ROTATE_G);
+		rotate_player(pars, key, ROTATE_G);
 	rgb_to_hex(pars);
 	draw_game(pars);
 }
 
-int moves(int key, t_pars *pars)
+int	moves(int key, t_pars *pars)
 {
-    printf("ciaoo %d\n", key);
-    if(key == 65307)
-    {
+	printf("ciaoo %d\n", key);
+	if (key == 65307)
+	{
 		free_all(pars);
-    }
-    moves_loop(pars, key);
-    return(1);
+	}
+	moves_loop(pars, key);
+	return (1);
 }
 
 void	update_player_position(t_pars *temp, int key)
 {
-  if (key == 115)
+	if (key == 115)
 	{
 		temp->player.x -= temp->player.dir_x * MOVESTEP;
 		temp->player.y -= temp->player.dir_y * MOVESTEP;
@@ -80,7 +92,7 @@ int	check_wall_collision(t_pars *pars, int key)
 	temp = *pars;
 	update_player_position(&temp, key);
 	if (key == 65361 || key == 65363)
- 		rotate_player(&temp, key, ROTATE_G);
+		rotate_player(&temp, key, ROTATE_G);
 	if (pars->matrix[(int)temp.player.y][(int)temp.player.x] == '1')
 		return (1);
 	set_plane(&temp);

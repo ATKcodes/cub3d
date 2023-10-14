@@ -1,6 +1,6 @@
 NAME = cub3D
 
-SRCS = 	 cub3d.c cub3d_utils.c gnl/get_next_line.c error.c gnl/get_next_line_utils.c parsing.c info_gather.c save_param.c save_param2.c open_window.c raycast.c raycast_util.c render.c save_param3.c moves.c free.c\
+SRCS = 	 cub3d.c cub3d_utils.c cub3d_utils2.c gnl/get_next_line.c error.c gnl/get_next_line_utils.c parsing.c info_gather.c save_param.c save_param2.c open_window.c raycast.c raycast_util.c render.c save_param3.c moves.c free.c\
 
 OBJS = ${SRCS:.c=.o}
 
