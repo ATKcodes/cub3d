@@ -15,7 +15,7 @@
 void	get_info(t_pars *pars)
 {
 	pars->info.count_info = 0;
-	//free_matrix (pars);
+	// free_matrix (pars);
 	pars->gnl = get_next_line(pars->fd);
 	// free (pars->gnl);
 	// free_matrix (pars);

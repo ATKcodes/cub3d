@@ -12,6 +12,24 @@
 
 #include "cub3d.h"
 
+void	count_rows(t_pars *pars)
+{
+	pars->rows = 0;
+	pars->gnl = NULL;
+	pars->gnl = get_next_line(pars->fd);
+	if (pars->gnl == NULL || pars->gnl == 0)
+		ft_error("Invalid reading\n");
+	while (pars->gnl)
+	{
+		free (pars->gnl);
+		pars->gnl = get_next_line(pars->fd);
+		pars->rows++;
+	}
+	free (pars->gnl);
+	close(pars->fd);
+	pars->matrix = malloc (sizeof(char *) * (pars->rows));
+}
+
 void	parsing(t_pars *pars)
 {
 	int	i;

@@ -90,6 +90,7 @@ typedef struct s_info {
 	t_data	we;
 	int		start_map;
 	int		count_info;
+	int		foundp;
 }	t_info;
 
 typedef struct s_mlx {
@@ -135,10 +136,10 @@ void			get_info(t_pars *pars);
 
 //parsing.c
 void			check_characters(t_pars *pars);
+void			check_characters2(t_pars *pars, int i, int d);
 void			check_borders(t_pars *pars);
 void			check_rows(t_pars *pars);
 void			check_rows2(t_pars *pars);
-void			count_rows(t_pars *pars);
 
 //save_param.c
 void			init_flags(t_pars *pars);

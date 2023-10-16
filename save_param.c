@@ -113,6 +113,7 @@ void	save_west(t_pars *pars)
 }
 void init_flags(t_pars *pars)
 {
+	pars->info.foundp = 0;
 	pars->info.no.flag = 0;
 	pars->info.ea.flag = 0;
 	pars->info.we.flag = 0;
