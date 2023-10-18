@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycast_util.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amaso <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/18 21:22:20 by amaso             #+#    #+#             */
+/*   Updated: 2023/10/18 21:24:56 by amaso            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 void	set_step(t_ray *ray)
@@ -41,22 +53,27 @@ void	set_delta_dist(t_ray *ray)
 void	set_side_dist(t_ray *ray, t_pars *pars)
 {
 	if (ray->ray_dir.x < 0)
-		ray->side_dist.x = (pars->player.x - (double)ray->map_x) * ray->delta_dist.x;
+		ray->side_dist.x = (pars->player.x - (double)ray->map_x)
+			* ray->delta_dist.x;
 	else
-		ray->side_dist.x = (ray->map_x + 1.0 - pars->player.x) * ray->delta_dist.x;
+		ray->side_dist.x = (ray->map_x + 1.0 - pars->player.x)
+			* ray->delta_dist.x;
 	if (ray->ray_dir.y < 0)
-		ray->side_dist.y = (pars->player.y - (double)ray->map_y) * ray->delta_dist.y;
+		ray->side_dist.y = (pars->player.y - (double)ray->map_y)
+			* ray->delta_dist.y;
 	else
-		ray->side_dist.y = (ray->map_y + 1.0 - pars->player.y) * ray->delta_dist.y;
+		ray->side_dist.y = (ray->map_y + 1.0 - pars->player.y)
+			* ray->delta_dist.y;
 }
 
 void	rotate_player(t_pars *pars, int key, double angle)
 {
-	double old_dirx;
-	double old_diry;
-	double old_planex;
-	double old_planey;
-	if(key == 65361)
+	double	old_dirx;
+	double	old_diry;
+	double	old_planex;
+	double	old_planey;
+
+	if (key == 65361)
 		angle *= -1;
 	old_dirx = pars->player.dir_x;
 	old_diry = pars->player.dir_y;

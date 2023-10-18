@@ -1,4 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amaso <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/18 20:44:05 by amaso             #+#    #+#             */
+/*   Updated: 2023/10/18 20:44:06 by amaso            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
+
 int	get_texture_scaled_x(t_pars *pars, t_ray *ray)
 {
 	double	wall_x;
@@ -39,11 +52,12 @@ t_render_info	get_render_info(t_ray *ray, t_pars *pars)
 		render_info.start_y = 0;
 	if (render_info.end_y >= WIN_SIZE_H)
 		render_info.end_y = WIN_SIZE_H;
-	render_info.tex_x = get_texture_scaled_x(pars , ray);
+	render_info.tex_x = get_texture_scaled_x(pars, ray);
 	render_info.tex_pos = (render_info.start_y - WIN_SIZE_H / 2
 			+ render_info.line_height / 2) * render_info.ratio;
 	return (render_info);
 }
+
 void	draw_pixel(t_data *data, int x, int y, int color)
 {
 	int	color_byte;
@@ -57,10 +71,10 @@ void	draw_pixel(t_data *data, int x, int y, int color)
 void	draw_wall(t_pars *pars, t_ray *ray, int x)
 {
 	t_render_info	info;
-	t_data		*img_info;
+	t_data			*img_info;
 	int				color;
-	color = -1;
 
+	color = -1;
 	img_info = &pars->mlx.img;
 	info = get_render_info(ray, pars);
 	while (info.start_y < info.end_y)

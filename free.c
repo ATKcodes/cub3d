@@ -20,12 +20,12 @@ void	free_all(t_pars	*pars)
 
 void	free_images(t_pars *pars)
 {
-	mlx_destroy_window(pars->mlx.mlx_init, pars->mlx.mlx_win);
 	mlx_destroy_image(pars->mlx.mlx_init, pars->mlx.img.img);
 	mlx_destroy_image(pars->mlx.mlx_init, pars->info.no.img);
 	mlx_destroy_image(pars->mlx.mlx_init, pars->info.so.img);
 	mlx_destroy_image(pars->mlx.mlx_init, pars->info.ea.img);
 	mlx_destroy_image(pars->mlx.mlx_init, pars->info.we.img);
+	mlx_destroy_window(pars->mlx.mlx_init, pars->mlx.mlx_win);
 }
 
 void	free_matrix(t_pars	*pars)
@@ -45,5 +45,7 @@ void	free_matrix(t_pars	*pars)
 		free(pars->matrix[d++]);
 	free(pars->matrix);
 	pars->matrix = NULL;
+	mlx_destroy_display(pars->mlx.mlx_init);
+	free (pars->mlx.mlx_init);
 	exit(0);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycast.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amaso <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/18 20:42:19 by amaso             #+#    #+#             */
+/*   Updated: 2023/10/18 20:42:21 by amaso            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 void	set_ray(t_pars *pars, t_ray *ray, double camera_x)
@@ -30,10 +42,12 @@ void	update_ray(t_ray *ray, int axis)
 void	set_perp_wall_dist(t_ray *ray, t_pars *pars)
 {
 	if (ray->side == 0)
-		ray->perp_wall_dist = (ray->map_x - pars->player.x + (1 - ray->step_x) / 2.0)
+		ray->perp_wall_dist = (ray->map_x - pars->player.x
+				+ (1 - ray->step_x) / 2.0)
 			/ ray->ray_dir.x;
 	else
-		ray->perp_wall_dist = (ray->map_y - pars->player.y + (1 - ray->step_y) / 2.0)
+		ray->perp_wall_dist = (ray->map_y - pars->player.y
+				+ (1 - ray->step_y) / 2.0)
 			/ ray->ray_dir.y;
 }
 

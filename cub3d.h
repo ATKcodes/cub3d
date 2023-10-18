@@ -152,10 +152,13 @@ void			save_west(t_pars *pars);
 void			save_background(t_pars *pars);
 void			background_cycle(t_pars *pars);
 void			save_colors(t_pars *pars);
+void			save_colors2(t_pars *pars, int n);
 
 //save_param3.c
 void			xpm_init(t_pars *pars);
 void			xpm_init2(t_pars *pars);
+void			xpm_init3(t_pars *pars);
+void			xpm_init4(t_pars *pars);
 
 //open_window.c
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
