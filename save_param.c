@@ -126,6 +126,7 @@ void	save_west(t_pars *pars)
 
 void	init_flags(t_pars *pars)
 {
+	pars->mlx.mlx_init = mlx_init();
 	pars->info.foundp = 0;
 	pars->info.no.flag = 0;
 	pars->info.ea.flag = 0;

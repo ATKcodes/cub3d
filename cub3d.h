@@ -191,6 +191,7 @@ int				check_wall_collision(t_pars *pars, int key);
 void			free_images(t_pars *pars);
 void			free_all(t_pars	*pars);
 void			free_matrix(t_pars	*pars);
+void			free_info(t_pars *pars);
 
 //render.c
 void			draw_wall(t_pars *pars, t_ray *ray, int x);

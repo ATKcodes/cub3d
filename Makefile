@@ -9,7 +9,7 @@ OBJS = ${SRCS:.c=.o}
 CC		= gcc -g
 RM		= rm -f
 
-CFLAGS = -I/usr/include -Imlx_linux -O3
+CFLAGS = -I/usr/include -Imlx_linux -O3 -Wall -Werror -Wextra
 #CFLAGS = -g
 
 %.o: %.c

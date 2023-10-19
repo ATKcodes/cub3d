@@ -22,7 +22,6 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 void	new_window(t_pars *pars)
 {
-	pars->mlx.mlx_init = mlx_init();
 	pars->mlx.mlx_win = mlx_new_window(pars->mlx.mlx_init, 1920, 1080, "cub3D");
 	pars->mlx.img.img = mlx_new_image(pars->mlx.mlx_init, 1920, 1080);
 	pars->mlx.img.addr = mlx_get_data_addr(pars->mlx.img.img,

@@ -49,3 +49,19 @@ void	free_matrix(t_pars	*pars)
 	free (pars->mlx.mlx_init);
 	exit(0);
 }
+
+void	free_info(t_pars *pars)
+{
+	if (pars->info.no.flag == 1)
+		free(pars->info.no.addr);
+	if (pars->info.so.flag == 1)
+		free(pars->info.so.addr);
+	if (pars->info.ea.flag == 1)
+		free(pars->info.ea.addr);
+	if (pars->info.we.flag == 1)
+		free(pars->info.we.addr);
+	free(pars->matrix);
+	mlx_destroy_display(pars->mlx.mlx_init);
+	free (pars->mlx.mlx_init);
+	exit(0);
+}

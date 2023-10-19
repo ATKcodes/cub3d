@@ -15,13 +15,12 @@
 void	count_rows(t_pars *pars)
 {
 	pars->rows = 0;
-	pars->gnl = NULL;
 	pars->gnl = get_next_line(pars->fd);
-	if (pars->gnl == NULL || pars->gnl == 0)
+	if (pars->gnl == NULL)
 		ft_error("Invalid reading\n");
 	while (pars->gnl)
 	{
-		free (pars->gnl);
+		free(pars->gnl);
 		pars->gnl = get_next_line(pars->fd);
 		pars->rows++;
 	}
@@ -45,6 +44,7 @@ void	parsing(t_pars *pars)
 			pars->matrix[i][d] = pars->gnl[d]; 
 		pars->matrix[i][d] = '\0';
 		free(pars->gnl);
+		pars->gnl = NULL;
 	}
 	pars->gnl = NULL;
 	check_characters(pars);

@@ -15,15 +15,15 @@
 void	get_info(t_pars *pars)
 {
 	pars->info.count_info = 0;
-	// free_matrix (pars);
 	pars->gnl = get_next_line(pars->fd);
-	// free (pars->gnl);
-	// free_matrix (pars);
 	while (pars->gnl && pars->info.count_info < 6
 		&& pars->gnl[0] != ' ' && pars->gnl[0] != '1')
 	{
 		if (ft_gnllen(pars->gnl) > 0 && ft_gnllen(pars->gnl) < 6)
+		{
 			ft_error("Invalid parameters");
+			free_info(pars);
+		}
 		if (ft_gnllen(pars->gnl) >= 6)
 		{
 			if (pars->gnl[0] == 'N' && pars->gnl[1] == 'O'
@@ -46,7 +46,7 @@ void	get_info(t_pars *pars)
 			{
 				ft_error("Invalid parameteeers");
 				free(pars->gnl);
-				free_matrix(pars);
+				free_info(pars);
 			}
 		}
 		free(pars->gnl);
@@ -56,6 +56,6 @@ void	get_info(t_pars *pars)
 	if (pars->info.count_info != 6)
 	{
 		ft_error("Wrong parameteeers1\n");
-		free_matrix(pars);
+		free_info(pars);
 	}
 }
