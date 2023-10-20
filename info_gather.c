@@ -28,12 +28,13 @@ void	get_info(t_pars *pars)
 		free(pars->gnl);
 		pars->gnl = get_next_line(pars->fd);
 	}
-	free(pars->gnl);
+	
 	if (pars->info.count_info != 6)
 	{
 		ft_error("Invalid parameters\n");
 		free_info(pars);
 	}
+	free(pars->gnl);
 }
 
 void	get_info2(t_pars *pars)
