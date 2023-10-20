@@ -20,7 +20,7 @@ void	save_north(t_pars *pars)
 	i = -1;
 	if (pars->info.no.flag != 0)
 	{
-		ft_error("Wrong address\n");
+		ft_error("Wrong parameters\n");
 		free_info(pars);
 	}
 	pars->info.no.flag++;
@@ -46,7 +46,7 @@ void	save_south(t_pars *pars)
 	i = -1;
 	if (pars->info.so.flag != 0)
 	{
-		ft_error("Wrong address\n");
+		ft_error("Wrong parameters\n");
 		free_info(pars);
 	}
 	pars->info.so.flag++;
@@ -98,7 +98,7 @@ void	save_west(t_pars *pars)
 	i = -1;
 	if (pars->info.we.flag != 0)
 	{
-		ft_error("Wrong address\n");
+		ft_error("Wrong parameters\n");
 		free_info(pars);
 	}
 	pars->info.we.flag++;

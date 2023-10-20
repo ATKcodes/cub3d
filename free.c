@@ -12,6 +12,7 @@
 
 #include "cub3d.h"
 
+//Free all to close the game with exit(0)
 void	free_all(t_pars	*pars)
 {
 	int	d;
@@ -35,6 +36,14 @@ void	free_all(t_pars	*pars)
 	exit(0);
 }
 
+//Free to free everything but with exit(1)
+void	free_xpm(t_pars *pars)
+{
+	free_images(pars);
+	free_matrix(pars);
+}
+
+//Freeing images
 void	free_images(t_pars *pars)
 {
 	mlx_destroy_image(pars->mlx.mlx_init, pars->mlx.img.img);
@@ -45,6 +54,7 @@ void	free_images(t_pars *pars)
 	mlx_destroy_window(pars->mlx.mlx_init, pars->mlx.mlx_win);
 }
 
+//Freeing the matrix with the map
 void	free_matrix(t_pars	*pars)
 {
 	int	d;
@@ -67,6 +77,7 @@ void	free_matrix(t_pars	*pars)
 	exit(1);
 }
 
+//Freeing everything without the rows of the matrix
 void	free_info(t_pars *pars)
 {
 	while (pars->gnl)

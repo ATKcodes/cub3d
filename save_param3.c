@@ -26,8 +26,8 @@ void	xpm_init(t_pars *pars)
 			&pars->info.so.endian);
 	if (!pars->info.so.img)
 	{
-		ft_error("XPM Error : check IMG_PATH or fileName");
-		free_all(pars);
+		ft_error("Img path error\n");
+		free_xpm(pars);
 	}
 	xpm_init2(pars);
 }
@@ -46,8 +46,8 @@ void	xpm_init2(t_pars *pars)
 			&pars->info.ea.endian);
 	if (!pars->info.ea.img)
 	{
-		ft_error("XPM Error : check IMG_PATH or fileName");
-		free_all(pars);
+		ft_error("Img path error\n");
+		free_xpm(pars);
 	}
 	xpm_init3(pars);
 }
@@ -66,8 +66,8 @@ void	xpm_init3(t_pars *pars)
 			&pars->info.no.endian);
 	if (!pars->info.no.img)
 	{
-		ft_error("XPM Error : check IMG_PATH or fileName");
-		free_all(pars);
+		ft_error("Img path error\n");
+		free_xpm(pars);
 	}
 	xpm_init4(pars);
 }
@@ -86,7 +86,7 @@ void	xpm_init4(t_pars *pars)
 			&pars->info.we.endian);
 	if (!pars->info.we.img)
 	{
-		ft_error("XPM Error : check IMG_PATH or fileName");
-		free_all(pars);
+		ft_error("Img path error\n");
+		free_xpm(pars);
 	}
 }

@@ -21,7 +21,7 @@ void	save_background(t_pars *pars)
 	{
 		if (ft_is_comma_num(pars->gnl[pars->i], pars) == 0)
 		{
-			ft_error("Wrong parsamenters\n");
+			ft_error("Wrong parameters\n");
 			free_matrix(pars);
 		}
 	}
@@ -33,7 +33,7 @@ void	save_background(t_pars *pars)
 	}
 	else if (pars->info.floor.flag != 0)
 	{
-		ft_error("Wrong paramenters\n");
+		ft_error("Wrong parameters\n");
 		free_matrix(pars);
 	}
 	background_cycle(pars);
@@ -71,7 +71,7 @@ void	save_colors(t_pars *pars)
 	n = atoi(pars->str);
 	if (n > 255 || n < 0)
 	{
-		ft_error("Wrong colors");
+		ft_error("Wrong colors\n");
 		free_matrix(pars);
 	}
 	save_colors2(pars, n);

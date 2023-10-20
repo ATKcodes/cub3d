@@ -4,13 +4,10 @@ SRCS = 	 cub3d.c cub3d_utils.c cub3d_utils2.c gnl/get_next_line.c error.c gnl/ge
 
 OBJS = ${SRCS:.c=.o}
 
-#CC		= gcc 
-# CC		= gcc -g -fsanitize=address
 CC		= gcc -g
 RM		= rm -f
 
 CFLAGS = -I/usr/include -Imlx_linux -O3 -Wall -Werror -Wextra
-#CFLAGS = -g
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -18,10 +15,6 @@ CFLAGS = -I/usr/include -Imlx_linux -O3 -Wall -Werror -Wextra
 $(NAME): $(OBJS)
 	@make --silent -C minilibx-linux 2>/dev/null
 	$(CC) $(OBJS) -Lminilibx-linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
-
-# $(NAMES): $(OBJS)
-# 	@make --silent -C minilibx-linux 2>/dev/null
-# 	$(CC) $(OBJS) -Lminilibx-linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz $(NAME)
 
 all:	${NAME}
 

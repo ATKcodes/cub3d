@@ -61,7 +61,7 @@ void	check_borders(t_pars *pars)
 			if (pars->matrix[pars->y][pars->x] != '1'
 				&& pars->matrix[pars->y][pars->x] != ' ')
 			{
-				ft_error("Invalid Map\n"); 
+				ft_error("Invalid map\n"); 
 				free_matrix(pars);
 			}
 			pars->x++;
