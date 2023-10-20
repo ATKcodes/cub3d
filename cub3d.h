@@ -133,6 +133,7 @@ void			*ft_memset(void *s, int c, size_t n);
 
 //info_gather.c
 void			get_info(t_pars *pars);
+void			get_info2(t_pars *pars);
 
 //parsing.c
 void			check_characters(t_pars *pars);

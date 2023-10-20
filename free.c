@@ -14,8 +14,25 @@
 
 void	free_all(t_pars	*pars)
 {
+	int	d;
+
+	d = 0;
 	free_images(pars);
-	free_matrix(pars);
+	if (pars->info.no.flag == 1)
+		free(pars->info.no.addr);
+	if (pars->info.so.flag == 1)
+		free(pars->info.so.addr);
+	if (pars->info.ea.flag == 1)
+		free(pars->info.ea.addr);
+	if (pars->info.we.flag == 1)
+		free(pars->info.we.addr);
+	while (d < pars->rows)
+		free(pars->matrix[d++]);
+	free(pars->matrix);
+	pars->matrix = NULL;
+	mlx_destroy_display(pars->mlx.mlx_init);
+	free (pars->mlx.mlx_init);
+	exit(0);
 }
 
 void	free_images(t_pars *pars)
@@ -47,11 +64,17 @@ void	free_matrix(t_pars	*pars)
 	pars->matrix = NULL;
 	mlx_destroy_display(pars->mlx.mlx_init);
 	free (pars->mlx.mlx_init);
-	exit(0);
+	exit(1);
 }
 
 void	free_info(t_pars *pars)
 {
+	while (pars->gnl)
+	{
+		free(pars->gnl);
+		pars->gnl = get_next_line(pars->fd);
+	}
+	close (pars->fd);
 	if (pars->info.no.flag == 1)
 		free(pars->info.no.addr);
 	if (pars->info.so.flag == 1)
@@ -63,5 +86,5 @@ void	free_info(t_pars *pars)
 	free(pars->matrix);
 	mlx_destroy_display(pars->mlx.mlx_init);
 	free (pars->mlx.mlx_init);
-	exit(0);
+	exit(1);
 }

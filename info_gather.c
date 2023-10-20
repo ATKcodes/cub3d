@@ -21,41 +21,42 @@ void	get_info(t_pars *pars)
 	{
 		if (ft_gnllen(pars->gnl) > 0 && ft_gnllen(pars->gnl) < 6)
 		{
-			ft_error("Invalid parameters");
+			ft_error("Invalid parameters\n");
 			free_info(pars);
 		}
-		if (ft_gnllen(pars->gnl) >= 6)
-		{
-			if (pars->gnl[0] == 'N' && pars->gnl[1] == 'O'
-				&& pars->gnl[2] == ' ')
-				save_north(pars);
-			else if (pars->gnl[0] == 'S' && pars->gnl[1] == 'O'
-				&& pars->gnl[2] == ' ')
-				save_south(pars);
-			else if (pars->gnl[0] == 'E' && pars->gnl[1] == 'A'
-				&& pars->gnl[2] == ' ')
-				save_east(pars);
-			else if (pars->gnl[0] == 'W' && pars->gnl[1] == 'E'
-				&& pars->gnl[2] == ' ')
-				save_west(pars);
-			else if (pars->gnl[0] == 'C' && pars->gnl[1] == ' ')
-				save_background(pars);
-			else if (pars->gnl[0] == 'F' && pars->gnl[1] == ' ')
-				save_background(pars);
-			else
-			{
-				ft_error("Invalid parameteeers");
-				free(pars->gnl);
-				free_info(pars);
-			}
-		}
+		get_info2(pars);
 		free(pars->gnl);
 		pars->gnl = get_next_line(pars->fd);
 	}
 	free(pars->gnl);
 	if (pars->info.count_info != 6)
 	{
-		ft_error("Wrong parameteeers1\n");
+		ft_error("Invalid parameters\n");
+		free_info(pars);
+	}
+}
+
+void	get_info2(t_pars *pars)
+{
+	if (pars->gnl[0] == 'N' && pars->gnl[1] == 'O'
+		&& pars->gnl[2] == ' ')
+		save_north(pars);
+	else if (pars->gnl[0] == 'S' && pars->gnl[1] == 'O'
+		&& pars->gnl[2] == ' ')
+		save_south(pars);
+	else if (pars->gnl[0] == 'E' && pars->gnl[1] == 'A'
+		&& pars->gnl[2] == ' ')
+		save_east(pars);
+	else if (pars->gnl[0] == 'W' && pars->gnl[1] == 'E'
+		&& pars->gnl[2] == ' ')
+		save_west(pars);
+	else if (pars->gnl[0] == 'C' && pars->gnl[1] == ' ')
+		save_background(pars);
+	else if (pars->gnl[0] == 'F' && pars->gnl[1] == ' ')
+		save_background(pars);
+	else
+	{
+		ft_error("Invalid parameters\n");
 		free_info(pars);
 	}
 }

@@ -17,10 +17,10 @@
 #  define BUFFER_SIZE 42
 # endif
 
-# include<unistd.h>
-# include<stdlib.h>
-# include<stdio.h>
-# include<string.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <string.h>
 # include <fcntl.h>
 
 int		get_ft_strlen(char *s);

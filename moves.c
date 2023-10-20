@@ -49,7 +49,6 @@ void	moves_loop2(t_pars *pars, int key)
 
 int	moves(int key, t_pars *pars)
 {
-	printf("ciaoo %d\n", key);
 	if (key == 65307)
 	{
 		free_all(pars);
