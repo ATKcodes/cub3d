@@ -28,7 +28,6 @@ void	get_info(t_pars *pars)
 		free(pars->gnl);
 		pars->gnl = get_next_line(pars->fd);
 	}
-	
 	if (pars->info.count_info != 6)
 	{
 		ft_error("Invalid parameters\n");
@@ -53,7 +52,7 @@ void	get_info2(t_pars *pars)
 		else if (pars->gnl[0] == 'W' && pars->gnl[1] == 'E'
 			&& pars->gnl[2] == ' ')
 			save_west(pars);
-			else if (pars->gnl[0] == 'C' && pars->gnl[1] == ' ')
+		else if (pars->gnl[0] == 'C' && pars->gnl[1] == ' ')
 			save_background(pars);
 		else if (pars->gnl[0] == 'F' && pars->gnl[1] == ' ')
 			save_background(pars);
