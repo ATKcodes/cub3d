@@ -48,6 +48,11 @@ void	parsing(t_pars *pars)
 	}
 	pars->gnl = NULL;
 	check_characters(pars);
+	if(pars->info.foundp == 0)
+	{
+	ft_error("No player found\n");
+					free_matrix(pars);
+	}
 	check_borders(pars);
 }
 

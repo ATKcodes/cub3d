@@ -78,15 +78,15 @@ void	check_rows(t_pars *pars)
 	{
 		if (pars->x == 0 && pars->matrix[pars->y][pars->x] == '0')
 		{
-			free_matrix(pars);
 			ft_error("Invalid map\n");
+			free_matrix(pars);
 		}
 		else if (pars->matrix[pars->y][pars->x] == '0'
 			&& (pars->matrix[pars->y - 1][pars->x] != '1'
 				&& pars->matrix[pars->y - 1][pars->x] != '0'))
 		{
-			free_matrix(pars);
 			ft_error("Invalid map\n");
+			free_matrix(pars);
 		}
 		check_rows2(pars);
 		pars->x++;
