@@ -53,7 +53,7 @@ void	parsing(t_pars *pars)
 	check_characters(pars);
 	if (pars->info.foundp == 0)
 	{
-		("No player found\n");
+		ft_error("No player found\n");
 		free_matrix(pars);
 	}
 	check_borders(pars);
