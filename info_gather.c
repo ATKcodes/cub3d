@@ -41,20 +41,20 @@ void	get_info2(t_pars *pars)
 	if (ft_gnllen(pars->gnl) != 0)
 	{
 		if (pars->gnl[0] == 'N' && pars->gnl[1] == 'O'
-			&& (pars->gnl[2] == ' ' || pars->gnl[2] == '\t'))
+			&& pars->gnl[2] == ' ')
 			save_north(pars);
 		else if (pars->gnl[0] == 'S' && pars->gnl[1] == 'O'
-			&& (pars->gnl[2] == ' ' || pars->gnl[2] == '\t'))
+			&& pars->gnl[2] == ' ')
 			save_south(pars);
 		else if (pars->gnl[0] == 'E' && pars->gnl[1] == 'A'
-			&& (pars->gnl[2] == ' ' || pars->gnl[2] == '\t'))
+			&& pars->gnl[2] == ' ')
 			save_east(pars);
 		else if (pars->gnl[0] == 'W' && pars->gnl[1] == 'E'
-			&& (pars->gnl[2] == ' ' || pars->gnl[2] == '\t'))
+			&& pars->gnl[2] == ' ')
 			save_west(pars);
-		else if (pars->gnl[0] == 'C' && (pars->gnl[1] == ' ' || pars->gnl[1] == '\t'))
+		else if (pars->gnl[0] == 'C' && pars->gnl[1] == ' ')
 			save_background(pars);
-		else if (pars->gnl[0] == 'F' && (pars->gnl[1] == ' ' || pars->gnl[1] == '\t'))
+		else if (pars->gnl[0] == 'F' && pars->gnl[1] == ' ')
 			save_background(pars);
 		else
 		{
