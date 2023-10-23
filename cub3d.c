@@ -17,7 +17,10 @@ void	count_rows(t_pars *pars)
 	pars->rows = 0;
 	pars->gnl = get_next_line(pars->fd);
 	if (pars->gnl == NULL)
+	{
 		ft_error("Invalid reading\n");
+		free_info(pars);
+	}
 	while (pars->gnl)
 	{
 		free(pars->gnl);
@@ -50,7 +53,7 @@ void	parsing(t_pars *pars)
 	check_characters(pars);
 	if (pars->info.foundp == 0)
 	{
-		ft_error("No player found\n");
+		("No player found\n");
 		free_matrix(pars);
 	}
 	check_borders(pars);
